@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
+    networks:
+      myenso_local:
+        ipv4_address: 10.192.19.58
+    ports:
+      - "10000:10000"  # Blob service
+      - "10001:10001"  # Queue service
+      - "10002:10002"  # Table service
+    volumes:
+      - azurite_data:/data
+    command: >
+      sh -c "
+      azurite-blob --location /data  --loose --debug /data/debug.log --blobHost 10.192.19.58 --blobPort 10000 &
+      azurite-queue --location /data --loose --debug /data/debug.log --queueHost 10.192.19.58 --queuePort 10001 &
+      azurite-table --location /data --loose --debug /data/debug.log --tableHost 10.192.19.58 --tablePort 10002
+      "
+
+volumes:
+  azurite_data:
+
+networks:
+  myenso_local:
+    external: true
