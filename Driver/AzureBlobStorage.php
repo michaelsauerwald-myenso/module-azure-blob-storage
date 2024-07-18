@@ -1,10 +1,7 @@
 <?php
 /**
- * MyEnso AzureBlobStorage
- *
- * @category   MyEnso
- * @package    MyEnso_AzureBlobStorage
- * @license    MIT
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -269,10 +266,12 @@ class AzureBlobStorage implements RemoteDriverInterface
         // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
         if (false !== ($imageSize = @getimagesizefromstring($content))) {
             $config['Metadata'] = [
-                'image-width' => $imageSize[0],
-                'image-height' => $imageSize[1]
+                'width' =>  $imageSize[0],
+                'height' =>  $imageSize[1]
             ];
         }
+
+
 
         try {
             $this->adapter->write($path, $content, new Config($config));

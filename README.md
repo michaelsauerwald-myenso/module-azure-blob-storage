@@ -1,9 +1,5 @@
 # MyEnso Azure Blob Storage
 
-[![Latest Stable Version](https://poser.pugx.org/myenso/module-azure-blob-storage/v/stable)](https://packagist.org/packages/myenso/module-azure-blob-storage)
-[![Total Downloads](https://poser.pugx.org/myenso/module-azure-blob-storage/downloads)](https://packagist.org/packages/myenso/module-azure-blob-storage)
-[![License](https://poser.pugx.org/myenso/module-azure-blob-storage/license)](https://packagist.org/packages/myenso/module-azure-blob-storage)
-
 This package provides a simple way to use Azure Blob Storage as a remote storage for your Magento 2 application.
 There is also support for svg images by "magestyapps/module-web-images" in composer.json.
 

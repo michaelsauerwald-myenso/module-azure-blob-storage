@@ -1,10 +1,7 @@
 <?php
 /**
- * MyEnso AzureBlobStorage
- *
- * @category   MyEnso
- * @package    MyEnso_AzureBlobStorage
- * @license    MIT
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 declare(strict_types=1);
@@ -109,9 +106,10 @@ class AzureBlobStorageFactory implements DriverFactoryInterface
     ): RemoteDriverInterface {
 
         $config['version'] = 'latest';
-
-        //$connectionString = $config['connection_string'] ?? 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFe6SuKF4rPcU31qVbVSveG+8n8uBL2AZuZ4nSPZo98YwHst9JdXN3H3G8HC1E0T1G6+UD7Lw==;BlobEndpoint=http://10.192.19.58:10000/devstoreaccount1;';
-        $connectionString = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://10.192.19.58:10000/devstoreaccount1;';
+        $accountName = $config['account_name'] ?? '';
+        $accountKey = $config['account_key'] ?? '';
+        $endpoint = $config['endpoint'] ?? '';
+        $connectionString = 'DefaultEndpointsProtocol=https;AccountName='.$accountName.';AccountKey='.$accountKey.';BlobEndpoint='.$endpoint.';';
 
         $blobClient = BlobRestProxy::createBlobService($connectionString);
         $containerName = $config['container'] ?? 'category-images';

@@ -28,7 +28,7 @@ class AzureCategoryAttributeBackendImagePlugin
 
     public function beforeBeforeSave(Subject $subject, $object)
     {
-                $attributeName = $subject->getAttribute()->getName();
+        $attributeName = $subject->getAttribute()->getName();
         $value = $object->getData($attributeName);
 
         // Retrieve bucket name from env.php
